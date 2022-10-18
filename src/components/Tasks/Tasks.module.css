@@ -1,0 +1,24 @@
+.container {
+    width: 25%;
+    border-radius: 12px;
+    background: #FFFFFF;
+    box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.1);
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 24px;
+    border-bottom: 1px solid #F4F5F7;
+}
+
+.title {
+    font-weight: 600;
+    line-height: 19px;
+    text-transform: uppercase;
+}
+
+.tasks {
+    padding: 24px;
+}
