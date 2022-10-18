@@ -18,5 +18,5 @@
 }
 
 .blocked {
-    color: #AEB5C1;
+    color: var(--color-blocked);
 }

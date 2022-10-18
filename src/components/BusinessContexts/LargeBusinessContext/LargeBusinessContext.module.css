@@ -1,0 +1,77 @@
+.businessContext {
+    width: 70%;
+    padding: 18px 35px;
+}
+
+.title {
+    font-weight: 600;
+    font-size: 21px;
+    line-height: 33px;
+    margin-bottom: 12px;
+}
+
+.container {
+    display: flex;
+    min-height: calc(100% - 50px);
+}
+
+.userAvatar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 1px solid #D4D6DA;
+}
+
+.image {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    padding-left: 14px;
+    width: 90%;
+}
+
+.info {
+    display: flex;
+    align-items: center;
+    height: 48px;
+    color: var(--color-gray-dark);
+    gap: 25px;
+}
+
+.author {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 25px;
+    color: #242325;
+}
+
+.date {
+    position: relative;
+}
+
+
+.date::before {
+    content: '';
+    position: absolute;
+    left: -20%;
+    top: 45%;
+    background: var(--color-gray-dark);
+    height: 3px;
+    width: 3px;
+    border-radius: 50%;
+}
+
+.text {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 24px;
+    color: var(--color-gray-dark);
+}
