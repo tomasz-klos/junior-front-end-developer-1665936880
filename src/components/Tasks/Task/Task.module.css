@@ -1,0 +1,22 @@
+.taskItem {
+    display: flex;
+    align-items: center;
+    padding: 8px 0;
+}
+
+.icon {
+    display: flex;
+    padding-right: 10px;
+}
+
+.title {
+    font-weight: 500;
+}
+
+.active {
+    font-weight: 600;
+}
+
+.blocked {
+    color: var(--color-blocked);
+}

@@ -1,0 +1,6 @@
+.businessList {
+    width: 30%;
+    background: var(--color-gray);
+    border-bottom-left-radius: 12px;
+    margin: 0 0 4px 4px;
+}

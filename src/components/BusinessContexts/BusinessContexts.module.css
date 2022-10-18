@@ -1,0 +1,40 @@
+.container {
+    width: 100%;
+    border-radius: 12px;
+    background: var(--color-white);
+    box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.1);
+}
+
+.header {
+    height: 65px;
+    border-bottom: 1px solid var(--color-gray);
+}
+
+.box {
+    display: flex;
+    padding: 0 48px;
+    height: 100%;
+}
+
+.button{
+    display: flex;
+    align-items: center;
+    background: none;
+    border: none;
+    border-bottom: 2px solid var(--color-blue);
+    cursor: pointer;
+    font-family: var(--font-main);
+
+}
+
+.title {
+    font-weight: 600;
+    color: var(--color-blue);
+    text-transform: uppercase;
+}
+
+.businessMain {
+    display: flex;
+    width: 100%;
+    min-height: calc(100% - 65px);
+}
