@@ -1,6 +1,6 @@
 import styles from "./SmallBusinessContext.module.css";
 import { BUSINESSCONTEXT_STATUS } from "../../../helpers/constants";
-import { convertDate } from "../../../utils/utils";
+import { formatDateToShort } from "../../../utils/utils";
 
 const SmallBusinessContext = ({ businessContext }) => {
   const { created_at, author, status, title, content } = businessContext;
@@ -23,7 +23,7 @@ const SmallBusinessContext = ({ businessContext }) => {
           <div className={styles.newIcon}>new</div>
         )}
         <span className={styles.author}>{author}</span>
-        <span className={styles.date}>{convertDate(created_at)}</span>
+        <span className={styles.date}>{formatDateToShort(created_at)}</span>
       </div>
       <p
         className={`${styles.title} ${

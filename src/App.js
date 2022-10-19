@@ -1,17 +1,22 @@
-import styles from './App.module.css';
-import Tasks from './components/Tasks/Tasks';
-import Header from './components/Header/Header';
-import BusinessContexts from './components/BusinessContexts/BusinessContexts';
+import { Routes, Route } from "react-router";
+
+import Layout from "./components/Layout/Layout";
+import ProtectedRoute from "./hocs/ProtectedRoute";
+import Homepage from "./components/Homepage/Homepage";
 
 function App() {
   return (
-    <div className={styles.container}>
-    <Header />
-    <main className={styles.main}>
-      <Tasks />
-      <BusinessContexts />
-    </main>
-    </div>
+    <Routes>
+      <Route
+        path="/tasks/:title"
+        element={
+          <ProtectedRoute>
+            <Layout />
+          </ProtectedRoute>
+        }
+      />
+      <Route path="/" element={<Homepage />} />
+    </Routes>
   );
 }
 

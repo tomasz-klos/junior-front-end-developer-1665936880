@@ -12,6 +12,14 @@ export const data = [
                 author: 'Author1',
                 created_at: '2022-06-02T00:00:00+02:00',
             },
+            {
+                id: 'b111',
+                status: 'active',
+                title: 'Pierwsze zadanie, status aktywny',
+                content: 'asdasd',
+                author: 'Author1',
+                created_at: '2022-06-02T00:00:00+02:00',
+            },
         ],
     },
     {
