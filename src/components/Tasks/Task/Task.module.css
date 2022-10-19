@@ -1,7 +1,18 @@
+.container {
+    transition: all .1s ease-in-out;
+}
+
 .taskItem {
+    box-sizing: border-box;
     display: flex;
     align-items: center;
     padding: 8px 0;
+    text-decoration: none;
+    color:  var(--color-black);
+}
+
+.hover:hover {
+    transform: scale(1.03);
 }
 
 .icon {
@@ -19,4 +30,9 @@
 
 .blocked {
     color: var(--color-blocked);
+}
+
+.disabled {
+    cursor: default;
+    pointer-events: none;
 }

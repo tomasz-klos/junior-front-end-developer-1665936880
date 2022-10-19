@@ -57,16 +57,23 @@
     position: relative;
 }
 
-
-.date::before {
+.date::after, .date::before {
     content: '';
     position: absolute;
-    left: -20%;
-    top: 45%;
     background: var(--color-gray-dark);
     height: 3px;
     width: 3px;
     border-radius: 50%;
+}
+
+.date::before {
+    left: -10%;
+    top: 45%;
+}
+
+.date::after {
+    right: -10%;
+    top: 45%;
 }
 
 .text {
