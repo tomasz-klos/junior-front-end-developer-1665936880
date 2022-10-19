@@ -13,7 +13,7 @@ const Homepage = () => {
       const element = data.find(task => task.status === TASK_STATUS.active);
       const title = formatTitleAsPath(element.title);
       console.log(title);
-      navigate(`/tasks/${title}`)
+      navigate(`/${title}`)
     },[navigate])
     
     return null;

@@ -1,30 +1,28 @@
-import { useEffect, useState } from "react";
-import { useParams } from "react-router";
+import { useEffect, useContext } from "react";
+import { useParams } from "react-router-dom";
 
 import styles from "./BusinessContexts.module.css";
 import BusinessIcon from "../Icons/BusinessIcon";
 import BusinessList from "./BusinessList/BusinessList";
-import { data } from "../../data";
-import { formatTitle } from "../../utils/utils";
 import LargeBusinessContext from "./LargeBusinessContext/LargeBusinessContext";
+import { formatTitle, setDoneContextToActive } from "../../utils/utils";
+import MainContext from "../../context/mainContext";
 import { BUSINESSCONTEXT_STATUS } from "../../helpers/constants";
 
 const BusinessContexts = () => {
   const { title } = useParams();
-  const [businessContexts, setBusinessContexts] = useState();
-  const [activeContext, setActiveContext] = useState();
+  const { tasks, setBusinessContexts, setCurrentContext } = useContext(MainContext);
 
   useEffect(() => {
-    if (!title) return;
+    if(!tasks) return;
     const formatedTitle = formatTitle(title);
-    const arrayOfContexts = data.find(
-      (element) => element.title === formatedTitle
-    ).businessContexts;
-    setBusinessContexts(arrayOfContexts);
-    const context = arrayOfContexts.find(element => element.status === BUSINESSCONTEXT_STATUS.active);
-    if (!context) return setActiveContext(arrayOfContexts[0]);
-    setActiveContext(context);
-  }, [title]);
+    const currentTask = tasks.find((task) => task.title === formatedTitle);
+    setBusinessContexts(currentTask.businessContexts);
+    setDoneContextToActive(currentTask.businessContexts, setBusinessContexts);
+    const currentContext = currentTask.businessContexts.find(context => context.status === BUSINESSCONTEXT_STATUS.active)
+    if(!currentContext) return setCurrentContext(currentTask.businessContexts[0]);
+    setCurrentContext(currentContext);
+  }, [tasks, title]);
 
   return (
     <div className={styles.container}>
@@ -37,14 +35,10 @@ const BusinessContexts = () => {
         </div>
       </div>
       <div className={styles.businessMain}>
-        {activeContext && (
-          <>
-            <BusinessList businessContexts={businessContexts} />
-            <LargeBusinessContext
-              businessContext={activeContext}
-            />
-          </>
-        )}
+        <>
+          <BusinessList />
+          <LargeBusinessContext />
+        </>
       </div>
     </div>
   );

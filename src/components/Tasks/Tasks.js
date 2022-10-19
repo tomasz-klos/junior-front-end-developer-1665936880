@@ -1,20 +1,28 @@
 import styles from "./Tasks.module.css";
 
-import { data } from "../../data";
 import Task from "./Task/Task";
+import MainContext from "../../context/mainContext";
+import { useContext } from "react";
 
 const Tasks = () => {
-    return (
+  const { tasks } = useContext(MainContext);
+  
+  return (
+    <>
+      {tasks && (
         <div className={styles.container}>
-            <div className={styles.header}>
-                <span className={styles.title}>Your Tasks</span>
-            </div>
-            <div className={styles.tasks}>
-                {data.map(task => <Task key={task.id} task={task} />
-                )}
-            </div>
+          <div className={styles.header}>
+            <span className={styles.title}>Your Tasks</span>
+          </div>
+          <div className={styles.tasks}>
+            {tasks.map((task) => (
+              <Task key={task.id} task={task} />
+            ))}
+          </div>
         </div>
-    )
-}
+      )}
+    </>
+  );
+};
 
 export default Tasks;

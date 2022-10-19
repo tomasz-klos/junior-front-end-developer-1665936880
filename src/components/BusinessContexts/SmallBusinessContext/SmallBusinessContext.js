@@ -1,22 +1,28 @@
 import styles from "./SmallBusinessContext.module.css";
 import { BUSINESSCONTEXT_STATUS } from "../../../helpers/constants";
-import { formatDateToShort } from "../../../utils/utils";
+import { formatDateToShort, businessContextHandle } from "../../../utils/utils";
+import { useContext } from "react";
+import MainContext from "../../../context/mainContext";
 
 const SmallBusinessContext = ({ businessContext }) => {
   const { created_at, author, status, title, content } = businessContext;
+  const { businessContexts, setBusinessContexts } = useContext(MainContext);
 
   const shortContent = `${content.substring(0, 110)}...`;
   const businessItemClass = `${styles.businessItem}
   ${status === BUSINESSCONTEXT_STATUS.new ? styles.businessItemNew : ""}
-  ${
-    status === BUSINESSCONTEXT_STATUS.active
-      ? styles.businessItemActive
-      : ""
-  }`
+  ${status === BUSINESSCONTEXT_STATUS.active ? styles.businessItemActive : ""}`;
 
   return (
-    <div
+    <button
       className={businessItemClass}
+      onClick={() =>
+        businessContextHandle(
+          businessContexts,
+          setBusinessContexts,
+          businessContext
+        )
+      }
     >
       <div className={styles.businessInfo}>
         {status === BUSINESSCONTEXT_STATUS.new && (
@@ -33,7 +39,7 @@ const SmallBusinessContext = ({ businessContext }) => {
         {title}
       </p>
       <p className={styles.content}>{shortContent}</p>
-    </div>
+    </button>
   );
 };
 
