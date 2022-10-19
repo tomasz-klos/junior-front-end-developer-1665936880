@@ -35,6 +35,14 @@ export const data = [
                 author: 'Author1',
                 created_at: '2022-06-02T00:00:00+02:00',
             },
+            {
+                id: 'b124124',
+                status: 'done',
+                title: 'Title1asdasdasdasd',
+                content: 'asdasd',
+                author: 'Author1',
+                created_at: '2022-06-02T00:00:00+02:00',
+            },
         ],
     },
     {

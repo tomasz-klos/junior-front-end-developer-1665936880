@@ -1,5 +1,5 @@
 import dayjs from "dayjs";
-import { TASK_STATUS } from "../helpers/constants";
+import { TASK_STATUS, BUSINESSCONTEXT_STATUS } from "../helpers/constants";
 import ActiveIcon from "../components/Icons/ActiveIcon";
 import CompletedIcon from "../components/Icons/CompletedIcon";
 import BlockedIcon from "../components/Icons/BlockedIcon";
@@ -128,4 +128,76 @@ export const selectIconToDisplay = (status) => {
     default:
       return <BlockedIcon />;
   }
+};
+
+const changeStatusToActive = (
+  businessContexts,
+  setBusinessContexts,
+  businessContext
+) => {
+  const array = [...businessContexts];
+  array.map((context) =>
+    context === businessContext
+      ? (context.status = BUSINESSCONTEXT_STATUS.active)
+      : null
+  );
+  setBusinessContexts(array);
+};
+
+const changeStatusToDone = (
+  businessContexts,
+  setBusinessContexts,
+  businessContext
+) => {
+  const array = [...businessContexts];
+  array.map((context) =>
+    context.status === BUSINESSCONTEXT_STATUS.active
+      ? (context.status = BUSINESSCONTEXT_STATUS.done)
+      : null
+  );
+  array.map((context) =>
+    context === businessContext
+      ? (context.status = BUSINESSCONTEXT_STATUS.active)
+      : null
+  );
+  setBusinessContexts(array);
+};
+
+export const businessContextHandle = (
+  businessContexts,
+  setBusinessContexts,
+  businessContext
+) => {
+  const { status } = businessContext;
+  switch (status) {
+    case BUSINESSCONTEXT_STATUS.new:
+      return changeStatusToActive(
+        businessContexts,
+        setBusinessContexts,
+        businessContext
+      );
+    case BUSINESSCONTEXT_STATUS.active:
+      return;
+    case BUSINESSCONTEXT_STATUS.done:
+      return changeStatusToDone(
+        businessContexts,
+        setBusinessContexts,
+        businessContext
+      );
+    default:
+  }
+};
+
+export const setDoneContextToActive = (
+  businessContexts,
+  setBusinessContexts
+) => {
+  const array = [...businessContexts];
+  if(array.length === 1) return;
+  array.map((context) =>
+    context.status === BUSINESSCONTEXT_STATUS.done
+      ? (context.status = BUSINESSCONTEXT_STATUS.active)
+      : null
+  );
+  setBusinessContexts(array);
 };

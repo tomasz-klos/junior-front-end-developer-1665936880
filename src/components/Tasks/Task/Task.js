@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 const Task = ({ task }) => {
   const { status, title } = task;
   const formatTitle = formatTitleAsPath(title);
+  
 
   return (
     <div
@@ -14,7 +15,7 @@ const Task = ({ task }) => {
       }`}
     >
       <Link
-        to={`/tasks/${formatTitle}`}
+        to={`/${formatTitle}`}
         className={`${styles.taskItem} ${
           status === TASK_STATUS.blocked && styles.disabled
         }`}
