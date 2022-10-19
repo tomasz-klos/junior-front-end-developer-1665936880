@@ -22,8 +22,7 @@ const BusinessContexts = () => {
     const currentContext = currentTask.businessContexts.find(context => context.status === BUSINESSCONTEXT_STATUS.active)
     if(!currentContext) return setCurrentContext(currentTask.businessContexts[0]);
     setCurrentContext(currentContext);
-  }, [tasks, title]);
-
+  }, [tasks, title, setBusinessContexts, setCurrentContext]);
   return (
     <div className={styles.container}>
       <div className={styles.header}>
