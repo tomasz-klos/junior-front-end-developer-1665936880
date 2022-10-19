@@ -23,7 +23,6 @@ const BusinessContexts = () => {
     if(!currentContext) return setCurrentContext(currentTask.businessContexts[0]);
     setCurrentContext(currentContext);
   }, [tasks, title, setBusinessContexts, setCurrentContext]);
-
   return (
     <div className={styles.container}>
       <div className={styles.header}>
